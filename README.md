@@ -13,3 +13,5 @@ File "dune", line 3, characters 0-172:
 8 |           (copy sandbox/libfoo.a libfoo_stubs.a))))
 Error: No rule found for sandbox/libfoo.a
 ```
+
+Splitting the rule seems to be the way to go

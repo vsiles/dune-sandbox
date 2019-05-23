@@ -1,23 +1,17 @@
-(data_only_dirs sandbox)
-
-(rule
- (deps (source_tree sandbox))
- (targets libfoo_stubs.a)
- (action (progn
-          (chdir sandbox (run ./build.sh))
-          (copy sandbox/libfoo.a libfoo_stubs.a))))
-
-(library
- (name bar)
- (modules )
- (self_build_stubs_archive (foo)))
-
 (library
     (name libbar)
     (wrapped false)
     (modules )
     (c_names c_file)
     (libraries  bar))
+
+(copy_files sandbox/libfoo_stubs.a)
+
+(library
+ (name bar)
+ (modules )
+ (self_build_stubs_archive (foo)))
+
 
 (executable
     (name main)
